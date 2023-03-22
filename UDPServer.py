@@ -1,15 +1,15 @@
 from socket import *
 
-serverPort = 12345
+server_port = 12345
 
-serverSocket = socket(AF_INET, SOCK_DGRAM)
-serverSocket.bind(('', serverPort))
+server_socket = socket(AF_INET, SOCK_DGRAM)
+server_socket.bind(('', server_port))
 
-print('The server is ready on port {0}'.format(serverPort))
+print('The server is ready on port {0}'.format(server_port))
 
 while True:
-    msg, clientAddr = serverSocket.recvfrom(2048)
+    msg, client_addr = server_socket.recvfrom(2048)
     print('Message from Client: {0}'.format(msg.decode()))
-    modefiedMsg = msg.decode().upper()
-    serverSocket.sendto(modefiedMsg.encode(), clientAddr)
+    modefied_msg = msg.decode().upper()
+    server_socket.sendto(modefied_msg.encode(), client_addr)
     print('Modefied Message Sent!')

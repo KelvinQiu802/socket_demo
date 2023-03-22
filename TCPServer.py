@@ -1,19 +1,19 @@
 from socket import *
 
-serverPort = 12345
+server_port = 12345
 
-serverSocket = socket(AF_INET, SOCK_STREAM)
-serverSocket.bind(('', serverPort))
-serverSocket.listen(1)
-print('The server is ready on port {0}'.format(serverPort))
+server_socket = socket(AF_INET, SOCK_STREAM)
+server_socket.bind(('', server_port))
+server_socket.listen(1)
+print('The server is ready on port {0}'.format(server_port))
 
 while True:
     # create a new socket for each connection
-    connectionSocket, clientAddr = serverSocket.accept()
+    connection_socket, client_addr = server_socket.accept()
     print('Listening....')
-    msg = connectionSocket.recv(2048).decode()
-    modefiedMsg = msg.upper()
-    connectionSocket.send(modefiedMsg.encode())
+    msg = connection_socket.recv(2048).decode()
+    modefied_msg = msg.upper()
+    connection_socket.send(modefied_msg.encode())
     print('Modeifed Message Sent!')
-    connectionSocket.close()
+    connection_socket.close()
     print('Connection Closed!')

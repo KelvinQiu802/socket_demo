@@ -1,17 +1,17 @@
 from socket import *
 
-serverName = '127.0.0.1'
-serverPort = 12345
+server_name = '127.0.0.1'
+server_port = 12345
 
-clientSocket = socket(AF_INET, SOCK_STREAM)
-clientSocket.connect((serverName, serverPort))
+client_socket = socket(AF_INET, SOCK_STREAM)
+client_socket.connect((server_name, server_port))
 print('Connected to Server')
 
 sentence = input('Input lower case sentence: ')
 
-clientSocket.send(sentence.encode())
+client_socket.send(sentence.encode())
 print('Message Sent!')
-modefiedMsg = clientSocket.recv(2048)
-print('Reply from Server: {0}'.format(modefiedMsg.decode()))
+modefied_msg = client_socket.recv(2048)
+print('Reply from Server: {0}'.format(modefied_msg.decode()))
 
-clientSocket.close()
+client_socket.close()
